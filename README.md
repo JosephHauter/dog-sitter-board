@@ -1,4 +1,19 @@
 # Getting Started with Create React App
+## Configuring the Database
+This application uses MongoDB to store data. You need to provide your own MongoDB connection string to connect to your database.
+
+This project uses environment variables to keep sensitive information like connection strings secure. Follow these steps to add your own environment variables:
+
+1. In the `server` directory, create a new file and name it `.env`.
+2. Open the `.env` file in a text editor.
+3. Replace `YOUR_CONNECTION_STRING` with your connection string to your database
+
+Here's an example of what your `.env` file might look like:
+
+```plaintext
+DB_URI=YOUR_CONNECTION_STRING
+
+```
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
