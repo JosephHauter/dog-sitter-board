@@ -1,40 +1,56 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 const CreatePost = () => {
-    const [name, setName] = useState('');
-    const [about, setAbout] = useState('');
-  
-    useEffect(() => {
-      fetch('http://localhost:5000/users')
-        .then(response => response.json())
-        .catch(error => console.error('Error:', error));
-    }, []);
-  
-    const handleSubmit = (event) => {
-      event.preventDefault();
-  
-      fetch('http://localhost:5000/users', {
+  const [name, setName] = useState('');
+  const [image, setImage] = useState(null);
+
+  const handleImageChange = (event) => {
+    setImage(event.target.files[0]);
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('image', image);
+
+    try {
+      const response = await fetch('http://localhost:5000/upload', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ name, about })
-      })
-      .then(response => response.json())
-      .catch(error => console.error('Error:', error));
-    };
-  
-    return (
-      <div className="create">
-        <form onSubmit={handleSubmit}>
-          <input type="text" onChange={(event) => setName(event.target.value)} placeholder="Name" />
-          <br></br>
-          <textarea onChange={(event) => setAbout(event.target.value)} placeholder="About me" />
-          <br></br>
-          <button type="submit">Submit</button>
-        </form>
-      </div>
-    );
-}
+        body: formData,
+      });
+
+      const data = await response.json();
+      console.log('Success:', data);
+      // Handle success, update state, show notifications, etc.
+    } catch (error) {
+      console.error('Error:', error);
+      // Handle errors, show error messages, etc.
+    }
+  };
+
+  return (
+    <div className="create">
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={name}
+          onChange={(event) => setName(event.target.value)}
+          placeholder="Name"
+        />
+        <br />
+        <input
+          type="file"
+          accept="image/*"
+          onChange={handleImageChange}
+        />
+        <br />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );
+};
 
 export default CreatePost;
+
