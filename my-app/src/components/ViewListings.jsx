@@ -15,10 +15,8 @@ const ViewListings = () => {
       {users.map(user => (
         <div key={user._id}>
           <h2>{user.name}</h2>
-          <img
-             src={`http://localhost:5000/uploads/${user.image}`}
-            alt={user.name}
-          />
+          <img src={`http://localhost:5000/uploads/${user.image.filename}`} alt={user.name} />
+
         </div>
       ))}
     </div>

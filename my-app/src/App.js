@@ -3,6 +3,9 @@ import Header from "./components/Header.jsx";
 import Login from './components/Login.jsx';
 import Register from "./components/Register.jsx"
 import './App.css';
+import CreatePost from './components/CreatePost';
+import ViewListings from './components/ViewListings.jsx';
+
 
 function App() {
   return (
@@ -14,10 +17,13 @@ function App() {
         <div className="home-intro">Find a dog sitter or become one yourself!</div>
       </div>    
       <br/><br/>
+      {/* <CreatePost /> */}
       <Register /> 
       <Login />
+      {/* <ViewListings/> */}
     </div>  
   );
 }
+
 
 export default App;
