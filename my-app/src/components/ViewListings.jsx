@@ -16,7 +16,7 @@ const ViewListings = () => {
         <div key={user._id}>
           <h2>{user.name}</h2>
           <img
-            src={user.image}
+             src={`http://localhost:5000/uploads/${user.image}`}
             alt={user.name}
           />
         </div>

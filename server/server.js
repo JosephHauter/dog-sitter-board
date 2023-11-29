@@ -4,6 +4,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const multer = require('multer');
+const bcrypt = require('bcrypt');
 require('dotenv').config();
 
 app.use(cors());
@@ -76,16 +77,7 @@ app.post('/upload', (req, res) => {
       });
   });
 });  
-
-
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Listening to port ${PORT}`);
-});
-
-
-
-
+ 
 // // Define User Schema
 // const userSchema = new mongoose.Schema({
 //   name: String,
@@ -112,5 +104,57 @@ app.listen(PORT, () => {
 //   newUser.save()
 //     .then((user) => res.json(user))
 //     .catch((err) => res.status(400).json('Error: ' + err));
-// });
+// }); 
+
+// Define Log in Schema 
+const logInSchema = new mongoose.Schema({ 
+  username: String,
+  password: String
+  })
+
+const Login = mongoose.model("Login", logInSchema);  
+
+app.post('/register', async (req, res) => {
+  const { username, password } = req.body;
+
+  // Hash the password before storing it
+  const hashedPassword = await bcrypt.hash(password, 10);
+
+  // Create a new user
+  const newUser = new Login({ username, password: hashedPassword });
+
+  try {
+    await newUser.save();
+    res.json({ success: true, message: 'Registration successful' });
+  } catch (error) {
+    res.json({ success: false, message: 'Registration failed' });
+  }
+});
+
+// Login endpoint
+app.post('/login', async (req, res) => {
+  const { username, password } = req.body;
+
+  // Find the user by username
+  const user = await Login.findOne({ username });
+
+  if (user) {
+    // Compare the entered password with the stored hashed password
+    const passwordMatch = await bcrypt.compare(password, user.password);
+
+    if (passwordMatch) {
+      res.json({ success: true, message: 'Login successful' });
+    } else {
+      res.json({ success: false, message: 'Invalid credentials' });
+    }
+  } else {
+    res.json({ success: false, message: 'User not found' });
+  }
+});
+
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Listening to port ${PORT}`);
+});
 
