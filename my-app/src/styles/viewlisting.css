@@ -1,0 +1,14 @@
+.view {
+    margin-top: 50px;
+}
+
+.posting-inner-wrapper {
+    padding: 10px 75px 25px 75px;
+}
+
+.posting {
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 70%;
+    margin: 0 auto 30px auto;
+}

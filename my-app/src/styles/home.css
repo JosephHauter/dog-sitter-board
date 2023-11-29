@@ -1,0 +1,20 @@
+.home-wrapper {
+    margin: auto 100px auto 100px;
+}
+
+.home-image {
+    float: right;
+    width: 50%;
+    object-fit: contain;
+    border-radius: 150px 50px 150px 50px;
+}
+
+.home-intro {
+    float: left;
+    text-align: center;
+    width: 30%;
+    margin-top: 100px;
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 5%;
+}

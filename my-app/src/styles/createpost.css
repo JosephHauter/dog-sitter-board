@@ -1,0 +1,21 @@
+
+.create-name {
+    padding: 15px;
+    width: 300px;
+    height: 5px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.create-button {
+    width: 333px;
+    height: 45px;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    background-color: #EC8F5E;
+    font-size: 15px;
+    font-weight: bold;
+}
