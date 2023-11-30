@@ -120,10 +120,17 @@ app.post('/register', async (req, res) => {
   // Hash the password before storing it
   const hashedPassword = await bcrypt.hash(password, 10);
 
-  // Create a new user
-  const newUser = new Login({ username, password: hashedPassword });
-
   try {
+    // Check if the username already exists
+    const existingUser = await Login.findOne({ username });
+
+    if (existingUser) {
+      return res.json({ success: false, message: 'Username already exists' });
+    }
+
+    // Create a new user
+    const newUser = new Login({ username, password: hashedPassword });
+
     await newUser.save();
     res.json({ success: true, message: 'Registration successful' });
   } catch (error) {
