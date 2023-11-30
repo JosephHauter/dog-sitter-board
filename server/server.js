@@ -23,8 +23,10 @@ const ImageSchema = mongoose.Schema({
   image: {
     data: Buffer,
     contentType: String,
+    filename: String, 
   },
 });
+
 
 const Image = mongoose.model('Image', ImageSchema);
 
@@ -65,8 +67,10 @@ app.post('/upload', (req, res) => {
       image: {
         data: req.file.buffer,
         contentType: 'img/png',
+        filename: req.file.originalname, 
       },
     });
+    
 
     newImage
       .save()
@@ -77,7 +81,8 @@ app.post('/upload', (req, res) => {
       });
   });
 });  
- 
+app.use('/uploads', express.static('uploads'));
+
 // // Define User Schema
 // const userSchema = new mongoose.Schema({
 //   name: String,
