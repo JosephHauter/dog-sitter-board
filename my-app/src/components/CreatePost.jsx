@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import "../styles/createpost.css";
 
 const CreatePost = () => {
-  const [name, setName] = useState('');
+  const [name, setName] = useState(''); 
+  const [description, setDescription] = useState(''); 
   const [image, setImage] = useState(null);
 
   const handleImageChange = (event) => {
@@ -12,7 +14,8 @@ const CreatePost = () => {
     event.preventDefault();
 
     const formData = new FormData();
-    formData.append('name', name);
+    formData.append('name', name); 
+    formData.append('description', description)
     formData.append('image', image);
 
     try {
@@ -38,15 +41,24 @@ const CreatePost = () => {
           value={name}
           onChange={(event) => setName(event.target.value)}
           placeholder="Name"
+          className="create-name"
         />
-        <br />
+        <br /> 
+        <input
+          type="text"
+          value={description}
+          onChange={(event) => setDescription(event.target.value)}
+          placeholder="Description"
+          className="create-name"
+        />
+        <br />       
         <input
           type="file"
           accept="image/*"
           onChange={handleImageChange}
         />
         <br />
-        <button type="submit">Submit</button>
+        <button type="submit" className="create-button">Submit</button>
       </form>
     </div>
   );

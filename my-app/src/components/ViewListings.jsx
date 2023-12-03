@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import "../styles/viewlisting.css"
 
 const ViewListings = () => {
   const [users, setUsers] = useState([]);
@@ -11,10 +12,11 @@ const ViewListings = () => {
   }, []);
 
   return (
-    <div className="View">
+    <div className="view">
       {users.map(user => (
         <div key={user._id}>
-          <h2>{user.name}</h2>
+          <h2>{user.name}</h2> 
+          <h3>{user.description}</h3>
           <img src={`http://localhost:5000/uploads/${user.image.filename}`} alt={user.name} />
 
         </div>
@@ -22,17 +24,6 @@ const ViewListings = () => {
     </div>
   );
 };
-
-// Function to convert ArrayBuffer to base64
-function arrayBufferToBase64(buffer) {
-  let binary = '';
-  const bytes = new Uint8Array(buffer);
-  const len = bytes.byteLength;
-  for (let i = 0; i < len; i++) {
-    binary += String.fromCharCode(bytes[i]);
-  }
-  return window.btoa(binary);
-}
 
 export default ViewListings;
 
