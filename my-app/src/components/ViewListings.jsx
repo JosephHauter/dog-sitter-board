@@ -18,7 +18,7 @@ const ViewListings = () => {
           <div className="posting-inner-wrapper">
             <h2 className="posting-name">{user.name}</h2>
             <img
-              src={`http://localhost:5000/uploads/${user.image}`}
+              src={`http://localhost:5000/uploads/${user.image.filename}`}
               alt={user.name}
               className="posting-image"
             />
