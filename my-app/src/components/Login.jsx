@@ -1,33 +1,18 @@
-// Login.js
-
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { login } from '../actions/authActions'; 
 import "../styles/login_signup.css";
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
 
-  const handleLogin = async () => {
-    try {
-      const response = await axios.post('http://localhost:5000/login', {
-        username,
-        password,
-      });
-
-      console.log(response.data);
-
-      // Assuming the server sends user information upon successful login
-      if (response.data.success) {
-        localStorage.setItem('loggedInUser', JSON.stringify(response.data.user));
-        alert('Login successful!');
-      } 
-    } catch (error) {
-      console.error('Error during login:', error);
-    }
+  const handleLogin = () => {
+    dispatch(login(username, password));
   };
-  
+
   return (
     <div className="login-signup-page">
       <h2 className="login-signup-header">Log in to (name)</h2>

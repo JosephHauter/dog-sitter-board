@@ -1,8 +1,14 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { clearUser } from '../actions/authActions'; // Make sure the path is correct
 
 const Logout = () => {
+  const dispatch = useDispatch();
+
   const handleLogout = () => {
     localStorage.removeItem('loggedInUser');
+    dispatch(clearUser());
+    
     alert('Logout successful!');
   };
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Navbar from "./components/Navbar.jsx";  
 // import Login from './components/Login.jsx';
 // import Register from "./components/Register.jsx"
@@ -11,6 +11,7 @@ import ViewListings from "./components/ViewListings.jsx";
 import Login from "./components/Login.jsx";
 import Register from './components/Register.jsx';
 import CreatePost from './components/CreatePost.jsx';
+import withAuth from './components/withAuth'; // Import the HOC
 
 function App() {
   return (
@@ -18,14 +19,13 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/viewlistings" element={<ViewListings />} />
+        <Route path="/viewlistings" element={withAuth(<ViewListings />)} /> {/* Protect the route */}
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Register />} />
-        <Route path="/createpost" element={<CreatePost />} />
+        <Route path="/createpost" element={withAuth(<CreatePost />)} /> {/* Protect the route */}
       </Routes>
     </Router>
   );
 }
-
 
 export default App;
