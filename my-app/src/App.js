@@ -19,10 +19,10 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/viewlistings" element={withAuth(<ViewListings />)} /> {/* Protect the route */}
+        <Route path="/viewlistings" element={withAuth(<ViewListings />)} /> 
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Register />} />
-        <Route path="/createpost" element={withAuth(<CreatePost />)} /> {/* Protect the route */}
+        <Route path="/createpost" element={withAuth(<CreatePost />)} /> 
       </Routes>
     </Router>
   );
