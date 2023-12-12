@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'; 
+import { useSelector } from 'react-redux';
 import "../styles/createpost.css";
 
 const CreatePost = () => {
+  const auth = useSelector((state) => state.auth);
+  console.log('Auth state in CreatePost:', auth);
   const [name, setName] = useState(''); 
   const [description, setDescription] = useState(''); 
   const [image, setImage] = useState(null);
