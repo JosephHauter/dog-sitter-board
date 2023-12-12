@@ -1,5 +1,10 @@
-.home-wrapper {
+.home-outer-wrapper {
+    display: block;
+}
+
+.home-title-block {
     margin: auto 100px auto 100px;
+    height: 300px;
 }
 
 .home-image {

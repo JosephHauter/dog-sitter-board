@@ -12,3 +12,9 @@
     width: 70%;
     margin: 0 auto 30px auto;
 }
+
+.posting-image {
+    width: 350px;
+    max-height: 350px;
+    object-fit: contain;
+}

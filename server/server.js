@@ -4,7 +4,8 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const multer = require('multer');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt'); 
+const jwt = require('jsonwebtoken')
 require('dotenv').config();
 
 app.use(cors());
@@ -18,6 +19,10 @@ const url = process.env.DB_URI;
 const ImageSchema = mongoose.Schema({
   name: {
     type: String,
+    required: true,
+  },
+  description: { 
+    type: String, 
     required: true,
   },
   image: {
@@ -63,7 +68,8 @@ app.post('/upload', (req, res) => {
     }
 
     const newImage = new Image({
-      name: req.body.name,
+      name: req.body.name, 
+      description: req.body.description,
       image: {
         data: req.file.buffer,
         contentType: 'img/png',
@@ -83,52 +89,33 @@ app.post('/upload', (req, res) => {
 });  
 app.use('/uploads', express.static('uploads'));
 
-// // Define User Schema
-// const userSchema = new mongoose.Schema({
-//   name: String,
-//   about: String
-// });
-
-// // Create User Model
-// const User = mongoose.model('User', userSchema);
-
-// // Handle GET request
-// app.get('/users', (req, res) => {
-//   User.find()
-//     .then((users) => res.json(users))
-//     .catch((err) => res.status(400).json('Error: ' + err));
-// });
-
-// // Handle POST request
-// app.post('/users', (req, res) => {
-//   const newUser = new User({
-//     name: req.body.name,
-//     about: req.body.about
-//   });
-
-//   newUser.save()
-//     .then((user) => res.json(user))
-//     .catch((err) => res.status(400).json('Error: ' + err));
-// }); 
-
 // Define Log in Schema 
 const logInSchema = new mongoose.Schema({ 
   username: String,
+  email: String, 
+  bio: String,
   password: String
   })
 
 const Login = mongoose.model("Login", logInSchema);  
 
 app.post('/register', async (req, res) => {
-  const { username, password } = req.body;
+  const { username, email, bio, password } = req.body;
 
   // Hash the password before storing it
   const hashedPassword = await bcrypt.hash(password, 10);
 
-  // Create a new user
-  const newUser = new Login({ username, password: hashedPassword });
-
   try {
+    // Check if the username already exists
+    const existingUser = await Login.findOne({ username });
+
+    if (existingUser) {
+      return res.json({ success: false, message: 'Username already exists' });
+    }
+
+    // Create a new user
+    const newUser = new Login({ username, bio, email, password: hashedPassword });
+
     await newUser.save();
     res.json({ success: true, message: 'Registration successful' });
   } catch (error) {
@@ -148,7 +135,14 @@ app.post('/login', async (req, res) => {
     const passwordMatch = await bcrypt.compare(password, user.password);
 
     if (passwordMatch) {
-      res.json({ success: true, message: 'Login successful' });
+      // Issue a JWT token upon successful login
+      const token = jwt.sign(
+        { userId: user._id, username: user.username },
+        'secretkey',
+        { expiresIn: '24h' } // Set an expiration time for the token
+      );
+
+      res.json({ success: true, message: 'Login successful', token });
     } else {
       res.json({ success: false, message: 'Invalid credentials' });
     }
