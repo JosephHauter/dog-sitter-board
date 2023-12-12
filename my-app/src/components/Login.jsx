@@ -15,17 +15,18 @@ const Login = () => {
     try {
       const response = await dispatch(login(username, password));
       console.log('Login response:', response);
-      // Handle successful login, such as redirecting to another page
+      if (response && response.success) {
+        
+        navigate('/dashboard'); // Replace '/dashboard' with the path you want to redirect to
+      }
     } catch (error) {
       console.error('Login error:', error);
-      // Handle login error, such as displaying an error message
     }
   };
-  
 
   // Redirect if logged in
   if (auth.user) {
-    navigate('/dashboard'); // Replace '/dashboard' with the path you want to redirect to
+    navigate('/dashboard'); 
   }
 
   return (
@@ -55,7 +56,7 @@ const Login = () => {
       </form>
       <div className="login-signup-switch-wrapper">
         <span className="login-signup-switch-text">Don't have an account?</span>
-        <NavLink to="../signup" className="login-signup-switch"> Register </NavLink>
+        <NavLink to="/signup" className="login-signup-switch"> Register </NavLink>
         <span className="login-signup-switch-text">here.</span>
       </div>
     </div>
