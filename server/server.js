@@ -142,7 +142,7 @@ app.post('/login', async (req, res) => {
         { expiresIn: '24h' } // Set an expiration time for the token
       );
 
-      res.json({ success: true, message: 'Login successful', token });
+      res.json({ user: user._id, success: true, message: 'Login successful', token });
     } else {
       res.json({ success: false, message: 'Invalid credentials' });
     }
