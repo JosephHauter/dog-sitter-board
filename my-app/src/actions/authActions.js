@@ -28,11 +28,14 @@ export const login = (username, password) => async (dispatch) => {
     if (response.data.success) {
       dispatch(setUser(response.data.user));
       localStorage.setItem('loggedInUser', JSON.stringify(response.data.user));
+      return response.data; // Return the response data for further processing
     } else {
-      dispatch(setError('Invalid credentials'));
+      dispatch(setError(response.data.message || 'Invalid credentials'));
+      return null; // Return null to indicate an unsuccessful login
     }
   } catch (error) {
-    dispatch(setError('Login failed'));
+    dispatch(setError(error.response?.data?.message || 'Login failed'));
+    return null; // Return null to indicate an error occurred
   } finally {
     dispatch(setLoading(false));
   }
