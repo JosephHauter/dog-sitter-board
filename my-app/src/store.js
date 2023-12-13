@@ -1,22 +1,26 @@
-// store.js
+import { configureStore } from '@reduxjs/toolkit';
+import authReducer from './reducers/authReducer';
 
-import { createStore } from 'redux';
-
-const initialState = {
-  users: []
+// Function to safely parse JSON from localStorage
+const safeParse = (item) => {
+  try {
+    return JSON.parse(item);
+  } catch (error) {
+    return null;
+  }
 };
 
-function rootReducer(state = initialState, action) {
-  switch (action.type) {
-    case 'SET_USERS':
-      return { ...state, users: action.payload };
-    case 'ADD_USER':
-      return { ...state, users: [...state.users, action.payload] };
-    default:
-      return state;
-  }
-}
+// Retrieve the 'loggedInUser' item from local storage
+const persistedState = safeParse(localStorage.getItem('loggedInUser'));
 
-const store = createStore(rootReducer);
+// Initialize state from local storage to persist login state
+const preloadedState = persistedState ? { auth: { user: persistedState } } : {};
+
+const store = configureStore({
+  reducer: {
+    auth: authReducer,
+  },
+  preloadedState, // Pass the preloaded state as the initial state
+});
 
 export default store;

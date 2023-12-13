@@ -1,5 +1,20 @@
 .create {
     text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 50px;
+}
+
+.create-text {
+    line-height: 1.5;
+}
+
+.create-image {
+    height: 150px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center -150px;
+    background-image: url("https://www.hdwallpapers.in/download/funny_brown_dog_is_wearing_eye_glasses_tie_sitting_in_black_background_4k_hd_funny_dog-HD.jpg");
 }
 
 .create-name {

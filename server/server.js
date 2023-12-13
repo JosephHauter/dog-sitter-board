@@ -17,12 +17,20 @@ app.use(bodyParser.urlencoded({ extended: false }));
 const url = process.env.DB_URI;
 
 const ImageSchema = mongoose.Schema({
+  title: {
+    type: String,
+    required: true,
+  },
   name: {
     type: String,
     required: true,
   },
   description: { 
     type: String, 
+    required: true,
+  },
+  location: {
+    type: String,
     required: true,
   },
   image: {
@@ -142,7 +150,7 @@ app.post('/login', async (req, res) => {
         { expiresIn: '24h' } // Set an expiration time for the token
       );
 
-      res.json({ success: true, message: 'Login successful', token });
+      res.json({ user: user._id, success: true, message: 'Login successful', token });
     } else {
       res.json({ success: false, message: 'Invalid credentials' });
     }

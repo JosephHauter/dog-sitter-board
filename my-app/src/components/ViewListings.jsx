@@ -11,12 +11,18 @@ const ViewListings = () => {
       .catch(error => console.error('Error:', error));
   }, []);
 
+  console.log(users);
   return (
     <div className="view">
       {users.map(user => (
         <div key={user._id} className="posting">
           <div className="posting-inner-wrapper">
-            <h2 className="posting-name">{user.name}</h2>
+            <div className="posting-text">
+              <h2 className="posting-name">{user.title}</h2>
+              <p className="posting-user"> Posted by: {user.name}</p>
+              <p>{user.description}</p>
+              <p>{user.location}</p>
+            </div>
             <img
               src={`http://localhost:5000/uploads/${user.image.filename}`}
               alt={user.name}

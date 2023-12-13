@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'; 
+import { useSelector } from 'react-redux';
 import "../styles/createpost.css";
 
 const CreatePost = () => {
+  const auth = useSelector((state) => state.auth);
+  console.log('Auth state in CreatePost:', auth);
   const [name, setName] = useState(''); 
+  const [title, setTitle] = useState('');
   const [description, setDescription] = useState(''); 
+  const [location, setLocation] = useState(''); 
   const [image, setImage] = useState(null);
 
   const handleImageChange = (event) => {
@@ -35,8 +40,9 @@ const CreatePost = () => {
 
   return (
     <div className="create">
+      <div className="create-image"></div>
       <h1>Create a Post!</h1>
-      <p>Enter a title, description, and upload an image.</p><br />
+      <p className="create-text">Please enter the following information. <br/>Your posting will appear in the "Jobs" page.</p><br />
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -45,12 +51,28 @@ const CreatePost = () => {
           placeholder="Name"
           className="create-name"
         />
+        <br />
+        <input
+          type="text"
+          value={title}
+          onChange={(event) => setTitle(event.target.value)}
+          placeholder="Title"
+          className="create-name"
+        />
         <br /> 
         <input
           type="text"
           value={description}
           onChange={(event) => setDescription(event.target.value)}
           placeholder="Description"
+          className="create-name"
+        />
+        <br /> 
+        <input
+          type="text"
+          value={location}
+          onChange={(event) => setLocation(event.target.value)}
+          placeholder="City"
           className="create-name"
         />
         <br />       
