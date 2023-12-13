@@ -1,3 +1,7 @@
+/**
+ * ViewListings.jsx
+ * All created posts will appear in the Jobs tab. 
+ */
 import React, { useState, useEffect } from 'react';
 import "../styles/viewlisting.css"
 

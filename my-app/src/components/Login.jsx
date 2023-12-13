@@ -1,3 +1,8 @@
+/**
+ * Login.jsx
+ * Users will be able to log into their account by entering their username and password. 
+ */
+
 import React, { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';

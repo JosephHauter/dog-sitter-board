@@ -1,4 +1,9 @@
-// Navbar.jsx
+/**
+ * Navbar.jsx
+ * The navbar appears on every page. 
+ * When the user is not logged in, the navbar will only show the log in, sign up, and jobs buttons.
+ * After the user signs in, the navbar will no longer have the log in and sign up buttons, but the create post and signout buttons.
+ */ 
 import "../styles/navbar.css";
 
 import React from 'react';
@@ -14,7 +19,8 @@ const Navbar = () => {
   const handleLogout = () => {
     localStorage.removeItem('loggedInUser');
     dispatch(clearUser());
-    navigate('/login'); // Redirect to the login page after logout
+    // Redirect to the login page after logout
+    navigate('/login'); 
   };
 
   return (

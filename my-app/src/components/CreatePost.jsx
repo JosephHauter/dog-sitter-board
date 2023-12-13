@@ -1,3 +1,8 @@
+/**
+ * CreatePost.jsx
+ * Users will fill out information in a form to create a new post. The post will appear in the list of jobs. 
+ */
+
 import React, { useState } from 'react'; 
 import { useSelector } from 'react-redux';
 import "../styles/createpost.css";
@@ -30,11 +35,12 @@ const CreatePost = () => {
       });
 
       const data = await response.json();
-      console.log('Success:', data);
       // Handle success, update state, show notifications, etc.
+      console.log('Success:', data);
+      
     } catch (error) {
-      console.error('Error:', error);
       // Handle errors, show error messages, etc.
+      console.error('Error:', error);  
     }
   };
 
@@ -42,7 +48,9 @@ const CreatePost = () => {
     <div className="create">
       <div className="create-image"></div>
       <h1>Create a Post!</h1>
-      <p className="create-text">Please enter the following information. <br/>Your posting will appear in the "Jobs" page.</p><br />
+      <p className="create-text">Please enter the following information. 
+        <br/>Your posting will appear in the "Jobs" page.
+      </p><br />
       <form onSubmit={handleSubmit}>
         <input
           type="text"

@@ -1,6 +1,10 @@
+/**
+ * Logout.jsx
+ * Users will be logged out of their account with a press of a buton.
+ */
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { clearUser } from '../actions/authActions'; // Make sure the path is correct
+import { clearUser } from '../actions/authActions'; 
 
 const Logout = () => {
   const dispatch = useDispatch();

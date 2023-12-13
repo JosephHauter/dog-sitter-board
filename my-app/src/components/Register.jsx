@@ -1,4 +1,7 @@
-// Register.js
+/**
+ * Register.jsx
+ * Users can sign up and make an account by entering a username, their email, and a password. 
+ */
 
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
