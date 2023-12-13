@@ -101,14 +101,13 @@ app.use('/uploads', express.static('uploads'));
 const logInSchema = new mongoose.Schema({ 
   username: String,
   email: String, 
-  bio: String,
   password: String
   })
 
 const Login = mongoose.model("Login", logInSchema);  
 
 app.post('/register', async (req, res) => {
-  const { username, email, bio, password } = req.body;
+  const { username, email, password } = req.body;
 
   // Hash the password before storing it
   const hashedPassword = await bcrypt.hash(password, 10);
@@ -122,7 +121,7 @@ app.post('/register', async (req, res) => {
     }
 
     // Create a new user
-    const newUser = new Login({ username, bio, email, password: hashedPassword });
+    const newUser = new Login({ username, email, password: hashedPassword });
 
     await newUser.save();
     res.json({ success: true, message: 'Registration successful' });

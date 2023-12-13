@@ -9,14 +9,12 @@ const Register = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState(''); 
   const [email, setEmail] = useState(''); 
-  const [bio, setBio] = useState(''); 
 
   const handleRegister = async () => {
     try {
       const response = await axios.post('http://localhost:5000/register', {
         username, 
         email, 
-        bio,
         password,
       });
 
@@ -52,15 +50,7 @@ const Register = () => {
           className="login-signup-input"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-        />
-        <br />
-        <input
-          type="text"
-          placeholder="Bio"
-          className="login-signup-input"
-          value={bio}
-          onChange={(e) => setBio(e.target.value)}
-        />
+        />      
         <br />
         <button type="button" onClick={handleRegister} className="login-signup-button">
           Sign Up

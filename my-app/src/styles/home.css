@@ -11,20 +11,25 @@ body {
 }
 
 .home-title-block {
-    height: 600px;
+    height: 100vh;
     text-align: center;
-    background-size: 100%;
+    width: 100%;
+    background-size: 100% 100%;
     background-image: url("https://images.wallpaperscraft.com/image/single/corgi_dog_pet_936416_3840x2160.jpg");
     background-repeat: no-repeat;
 }
 
 .home-intro {
     margin: 0;
-    padding-top: 250px;
+    height: 100vh;
     font-size: 64px;
-    text-shadow:black 1px 0 10px;
+    text-shadow:black 2px 2px 1px;
     color: white;
     transform: scale(.8, 1);
+	display: flex;
+    text-align: center;
+	flex-direction: column;
+    justify-content: space-evenly;
 }
 
 .how-it-works-wrapper {
@@ -54,8 +59,7 @@ body {
 
 .features {
     width: 30%;
-    height: 55vh;
-    border: 1px solid #EC8F5E;
+    min-height: fit-content;
     background-color: #EC8F5E;
     color: white;
     border-radius: 10px;
@@ -65,7 +69,7 @@ body {
 
 .features-img {
     width: 100%;
-    height: 175px;
+    height: 30vh;
     object-fit: cover;
 }
 
