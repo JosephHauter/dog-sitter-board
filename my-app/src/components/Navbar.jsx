@@ -31,7 +31,7 @@ const Navbar = () => {
       <div className="navbar-link-wrapper">
         {auth.user ? (
           <>
-            <span className="navbar-link" id="welcome">Welcome, {auth.user.username}!</span>
+            <span className="navbar-link" id="welcome">Welcome, {auth.user}!</span>
             <NavLink to="/viewlistings" className="navbar-link">Jobs</NavLink>
             <NavLink to="/createpost" className="navbar-link">Create Post</NavLink>
             <button onClick={handleLogout} className="navbar-link" id="logout">Logout</button>
