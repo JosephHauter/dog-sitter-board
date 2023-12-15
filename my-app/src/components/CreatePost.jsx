@@ -1,8 +1,3 @@
-/**
- * CreatePost.jsx
- * Users will fill out information in a form to create a new post. The post will appear in the list of jobs. 
- */
-
 import React, { useState } from 'react'; 
 import { useSelector } from 'react-redux';
 import "../styles/createpost.css";
@@ -15,6 +10,7 @@ const CreatePost = () => {
   const [description, setDescription] = useState(''); 
   const [location, setLocation] = useState(''); 
   const [image, setImage] = useState(null);
+  const [error, setError] = useState(''); // State to store the error message
 
   const handleImageChange = (event) => {
     setImage(event.target.files[0]);
@@ -23,13 +19,18 @@ const CreatePost = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    // Check if all fields are filled
+    if (!name || !title || !description || !location || !image) {
+      setError('Please fill in all the fields.');
+      return; // Stop the function if any field is empty
+    }
+
     const formData = new FormData();
     formData.append('name', name);  
     formData.append('title', title); 
     formData.append('description', description); 
     formData.append('location', location); 
     formData.append('image', image); 
-
 
     try {
       const response = await fetch('http://localhost:5000/upload', {
@@ -40,10 +41,12 @@ const CreatePost = () => {
       const data = await response.json();
       // Handle success, update state, show notifications, etc.
       console.log('Success:', data);
+      setError(''); // Clear the error message on successful submission
       
     } catch (error) {
       // Handle errors, show error messages, etc.
       console.error('Error:', error);  
+      setError('An error occurred while creating the post. Please try again.');
     }
   };
 
@@ -54,6 +57,7 @@ const CreatePost = () => {
       <p className="create-text">Please enter the following information. 
         <br/>Your posting will appear in the "Jobs" page.
       </p><br />
+      {error && <p className="error">{error}</p>} {/* Display the error message if it exists */}
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -100,4 +104,3 @@ const CreatePost = () => {
 };
 
 export default CreatePost;
-
