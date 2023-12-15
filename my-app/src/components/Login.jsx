@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../actions/authActions'; 
+import { useDispatch } from 'react-redux';
+import { login } from '../actions/authActions';
 import "../styles/login_signup.css";
 
 const Login = () => {
@@ -10,7 +10,7 @@ const Login = () => {
   const [isMounted, setIsMounted] = useState(true); // Track component mount state
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [auth, setAuth] = useState('');
+  const [auth, setAuth] = useState({ user: null, error: null });
 
   useEffect(() => {
     // Component did mount
@@ -23,16 +23,18 @@ const Login = () => {
   const handleLogin = async () => {
     try {
       const response = await dispatch(login(username, password));  
-      setAuth((response))
-      console.log(auth)
-      console.log('Login response:', response); 
-      console.log('Auth state:', auth);
-      if (isMounted && response && response.success) {
+      if (response && response.success) {
+        // User exists and login is successful
+        setAuth(response);
         localStorage.setItem('loggedInUser', username);
-        navigate('/dashboard'); // Replace '/dashboard' with the path you want to redirect to
+        navigate('/dashboard');
+      } else {
+        // User does not exist or login failed
+        setAuth({ ...auth, error: 'User does not exist. Please register.' });
       }
     } catch (error) {
       console.error('Login error:', error);
+      setAuth({ ...auth, error: 'An error occurred during login. Please try again.' });
     }
   };
 
