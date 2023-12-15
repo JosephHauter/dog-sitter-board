@@ -1,8 +1,10 @@
 // authReducer.js
-import { SET_USER, CLEAR_USER, AUTH_LOADING, AUTH_ERROR } from '../actions/actionTypes';
+import { SET_USER, SET_EMAIL, SET_BIO, CLEAR_USER, AUTH_LOADING, AUTH_ERROR } from '../actions/actionTypes';
 
 const initialState = {
-  user: null,
+  user: null, 
+  email: null, 
+  bio: null,
   loading: false,
   error: null,
 };
@@ -13,6 +15,18 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         user: action.payload,
+        error: null,
+      }; 
+    case SET_EMAIL:
+      return {
+        ...state,
+        email: action.payload,
+        error: null,
+      }; 
+    case SET_BIO:
+      return {
+        ...state,
+        bio: action.payload,
         error: null,
       };
     case CLEAR_USER:

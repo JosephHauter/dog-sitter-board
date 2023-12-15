@@ -77,7 +77,9 @@ app.post('/upload', (req, res) => {
 
     const newImage = new Image({
       name: req.body.name, 
-      description: req.body.description,
+      title: req.body.title,  
+      description: req.body.description, 
+      location: req.body.location, 
       image: {
         data: req.file.buffer,
         contentType: 'img/png',
@@ -140,16 +142,15 @@ app.post('/login', async (req, res) => {
   if (user) {
     // Compare the entered password with the stored hashed password
     const passwordMatch = await bcrypt.compare(password, user.password);
-
     if (passwordMatch) {
       // Issue a JWT token upon successful login
       const token = jwt.sign(
-        { userId: user._id, username: user.username },
+        { userId: user._id, username: user.username},
         'secretkey',
         { expiresIn: '24h' } // Set an expiration time for the token
       );
 
-      res.json({ user: user._id, success: true, message: 'Login successful', token });
+      res.json({ user: user.username, success: true, message: 'Login successful', token, email: user.email, bio: user.bio});
     } else {
       res.json({ success: false, message: 'Invalid credentials' });
     }

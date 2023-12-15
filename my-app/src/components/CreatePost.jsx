@@ -24,9 +24,12 @@ const CreatePost = () => {
     event.preventDefault();
 
     const formData = new FormData();
-    formData.append('name', name); 
-    formData.append('description', description)
-    formData.append('image', image);
+    formData.append('name', name);  
+    formData.append('title', title); 
+    formData.append('description', description); 
+    formData.append('location', location); 
+    formData.append('image', image); 
+
 
     try {
       const response = await fetch('http://localhost:5000/upload', {

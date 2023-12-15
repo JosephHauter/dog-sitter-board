@@ -1,8 +1,3 @@
-/**
- * Login.jsx
- * Users will be able to log into their account by entering their username and password. 
- */
-
 import React, { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -50,7 +45,7 @@ const Login = () => {
 
   return (
     <div className="login-signup-page">
-      <h2 className="login-signup-header">Log in to Woof Woof</h2>
+      <h2 className="login-signup-header">Log in to (name)</h2>
       {auth.error && <p className="error">{auth.error}</p>}
       <form onSubmit={(e) => e.preventDefault()}>
         <input

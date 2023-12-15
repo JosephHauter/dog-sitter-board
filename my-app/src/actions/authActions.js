@@ -1,9 +1,19 @@
 // authActions.js
-import { SET_USER, CLEAR_USER, AUTH_LOADING, AUTH_ERROR } from './actionTypes';
+import { SET_USER, SET_EMAIL, SET_BIO, CLEAR_USER, AUTH_LOADING, AUTH_ERROR } from './actionTypes';
 import axios from 'axios';
 
 export const setUser = (userData) => ({
   type: SET_USER,
+  payload: userData,
+}); 
+
+export const setEmail = (userData) => ({ 
+  type: SET_EMAIL, 
+  payload: userData,
+}); 
+
+export const setBio = (userData) => ({ 
+  type: SET_BIO, 
   payload: userData,
 });
 
@@ -26,7 +36,8 @@ export const login = (username, password) => async (dispatch) => {
   try {
     const response = await axios.post('http://localhost:5000/login', { username, password });
     if (response.data.success) {
-      dispatch(setUser(response.data.user));
+      dispatch(setUser(response.data.user));  
+      dispatch(setEmail(response.data.email)); 
       localStorage.setItem('loggedInUser', JSON.stringify(response.data.user));
       return response.data; // Return the response data for further processing
     } else {
