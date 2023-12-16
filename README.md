@@ -1,3 +1,35 @@
+# Group 5
+## Members
+Tiffanie Ku, Joseph Hauter, Kevin Feng, Alvin Chan
+
+## Summary of the Project 
+"Woof Woof" is a dogsitter website where users can look for a dogsitter to hire or become on themselves. Users will be able to view a list of job listings, but when they log in, they can view their dashboard and create posts that show up in the job listings.
+
+## Completed Work
+The website has the following features completed: 
+- functioning server, database, and app
+- homepage
+- navbar
+- jobs listing page: displays posts each containing a title, location, description, image, and username of the poster. 
+- login page + functioning login and user authentication 
+- signup page
+- dashboard: features the user's username and email. 
+- create post page
+- sign out
+
+## Uncompleted Work
+None.
+However, there are many more features we would like to add in the future such as editing user's bio in dashboard, adding a comment section and "like" button for the posts in the job listings, communication between users, etc. 
+
+## Reference and Research
+- https://dev.to/salarc123/mern-stack-authentication-tutorial-part-1-the-backend-1c57 
+- https://dev.to/salarc123/mern-stack-authentication-tutorial-part-2-the-frontend-gen 
+- https://www.youtube.com/watch?v=jfZyqZycjmA&t=12s 
+
+General websites: 
+- Stack Overflow
+- W3Schools
+
 # Getting Started with Create React App
 ## Configuring the Database
 This application uses MongoDB to store data. You need to provide your own MongoDB connection string to connect to your database.
