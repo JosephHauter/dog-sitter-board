@@ -103,7 +103,8 @@ app.use('/uploads', express.static('uploads'));
 const logInSchema = new mongoose.Schema({ 
   username: String,
   email: String, 
-  password: String
+  password: String, 
+  bio: String, 
   })
 
 const Login = mongoose.model("Login", logInSchema);  
@@ -157,7 +158,22 @@ app.post('/login', async (req, res) => {
   } else {
     res.json({ success: false, message: 'User not found' });
   }
+});  
+
+app.put('/updateprofile', async (req, res) => {
+  const { username, email, bio } = req.body;
+  try {
+    const updatedUser = await Login.findOneAndUpdate(
+      { username: username },
+      { email: email, bio: bio },
+      { new: true }
+    );
+    res.status(200).json(updatedUser);
+  } catch (error) {
+    res.json({ success: false, message: 'User not found' });
+  }
 });
+
 
 
 const PORT = process.env.PORT || 5000;
