@@ -1,3 +1,7 @@
+/**
+ * CreatePost.jsx
+ * Users can create a post that will appear in the jobs page. 
+ */
 import React, { useState } from 'react'; 
 import { useSelector } from 'react-redux';
 import "../styles/createpost.css";
@@ -90,11 +94,14 @@ const CreatePost = () => {
           placeholder="City"
           className="create-name"
         />
-        <br />       
+        <br />
+        <label htmlFor="upload-image" className="upload-image-label">Image: </label>
         <input
           type="file"
           accept="image/*"
           onChange={handleImageChange}
+          id="upload-image"
+          title=" "
         />
         <br />
         <button type="submit" className="create-button">Submit</button>

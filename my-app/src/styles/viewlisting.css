@@ -21,8 +21,20 @@
     margin: 35px 50px auto 50px;
 }
 
-.posting-user {
+.posting-name {
+    margin-bottom: 0;
+}
+
+.posting-user{
     font-size: 14px;
+    padding-top: 50px;
+    padding-bottom: 20px;
+    color: gray;
+}
+
+.posting-location {
+    font-size: 14px;
+    margin-top: 5px;
 }
 
 .posting-image {

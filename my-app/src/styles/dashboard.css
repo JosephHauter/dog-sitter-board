@@ -19,13 +19,12 @@
 .welcome {
     margin: 30px 60px auto 60px;
     color: black;
-    font-size: 36px;  
     letter-spacing: 1.5px;
     font-weight: bold;
 }
 
 .dashboard-feature {
-    margin: 30px 60px auto 60px;
+    margin: 30px auto auto auto;
     border: 1px solid black;
     border-radius: 5px;
     min-height: fit-content;

@@ -23,7 +23,8 @@ body {
     margin: 0;
     height: 100vh;
     font-size: 64px;
-    text-shadow:black 2px 2px 1px;
+    font-weight: bold;
+    text-shadow:black 0px 0px 15px;
     color: white;
     transform: scale(.8, 1);
 	display: flex;

@@ -2,7 +2,6 @@
  * Home.jsx
  * This is for the homepage. 
  */
-
 import React from 'react'; 
 import "../styles/home.css";
 

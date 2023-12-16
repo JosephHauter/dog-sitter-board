@@ -2,7 +2,6 @@
  * Register.jsx
  * Users can sign up and make an account by entering a username, their email, and a password. 
  */
-
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import axios from 'axios';
@@ -12,6 +11,7 @@ const Register = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState(''); 
   const [email, setEmail] = useState(''); 
+  const [error, setError] = useState('');
 
   const handleRegister = async () => {
     try {
@@ -22,6 +22,7 @@ const Register = () => {
       });
 
       console.log(response.data);
+      setError(response.data.message);
     } catch (error) {
       console.error('Error during registration:', error);
     }
@@ -30,6 +31,7 @@ const Register = () => {
   return (
     <div className="login-signup-page">
       <h2 className="login-signup-header">Create an Account</h2>
+      <p className="error">{error}</p>
       <form>
         <input
           type="text"

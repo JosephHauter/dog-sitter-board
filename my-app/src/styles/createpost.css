@@ -21,7 +21,7 @@
 .create-name {
     padding: 15px;
     width: 300px;
-    height: 5px;
+    height: 10px;
     margin-bottom: 20px;
     border-radius: 5px;
     font-size: 15px;
@@ -30,11 +30,36 @@
 .create-button {
     width: 333px;
     height: 45px;
-    margin-top: 20px;
+    margin-top: 30px;
     border-radius: 5px;
     border: none;
     color: white;
     background-color: #EC8F5E;
     font-size: 15px;
     font-weight: bold;
+}
+
+.upload-image-label {
+    font-size: 14px;
+    margin-left: -45px;
+}
+
+#upload-image {
+    font-size: 12px;
+    color: grey;
+}
+
+#upload-image::file-selector-button {
+    color: #EC8F5E;
+    border: 1px solid #EC8F5E;
+    border-radius: 5px;
+    background-color: white;
+    width: 100px;
+    height: 30px;
+    font-size: 14px;
+    margin: auto 10px auto 10px;
+}
+
+#upload-image::file-selector-button:hover {
+    cursor: pointer;
 }

@@ -1,3 +1,7 @@
+/**
+ * Logout.jsx
+ * Users can log into their accounts by entering their username and password.
+ */
 import React, { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -30,7 +34,7 @@ const Login = () => {
         navigate('/dashboard');
       } else {
         // User does not exist or login failed
-        setAuth({ ...auth, error: 'User does not exist. Please register.' });
+        setAuth({ ...auth, error: 'Incorrect username or password.' });
       }
     } catch (error) {
       console.error('Login error:', error);
@@ -47,7 +51,7 @@ const Login = () => {
 
   return (
     <div className="login-signup-page">
-      <h2 className="login-signup-header">Log in to (name)</h2>
+      <h2 className="login-signup-header">Log in to Woof Woof</h2>
       {auth.error && <p className="error">{auth.error}</p>}
       <form onSubmit={(e) => e.preventDefault()}>
         <input
@@ -62,6 +66,7 @@ const Login = () => {
           type="password"
           placeholder="Password"
           className="login-signup-input"
+          id="login-signup-password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
