@@ -158,7 +158,21 @@ app.post('/login', async (req, res) => {
   } else {
     res.json({ success: false, message: 'User not found' });
   }
-}); 
+});  
+
+app.put('/updateprofile', async (req, res) => {
+  const { username, email, bio } = req.body;
+  try {
+    const updatedUser = await Login.findOneAndUpdate(
+      { username: username },
+      { email: email, bio: bio },
+      { new: true }
+    );
+    res.status(200).json(updatedUser);
+  } catch (error) {
+    res.json({ success: false, message: 'User not found' });
+  }
+});
 
 
 

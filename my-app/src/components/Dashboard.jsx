@@ -47,7 +47,7 @@ const Dashboard = () => {
               <input
                 type="text"
                 placeholder="Email"
-                value={editedEmail}
+                value={editedEmail || ''}
                 onChange={(e) => setEditedEmail(e.target.value)}
               />
               <input
