@@ -1,0 +1,44 @@
+.dashboard {
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 1.5px;
+}
+
+.welcome-wrapper {
+    text-align: center;
+}
+
+.dashboard-image {
+    height: 150px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center -100px;
+    background-image: url("https://static.vecteezy.com/system/resources/previews/030/527/246/non_2x/beautiful-fluffy-corgi-dog-in-sunglasses-lies-resting-in-the-sun-free-photo.jpg");
+}
+
+.welcome {
+    margin: 30px 60px auto 60px;
+    color: black;
+    letter-spacing: 1.5px;
+    font-weight: bold;
+}
+
+.dashboard-feature {
+    margin: 30px auto auto auto;
+    border: 1px solid black;
+    border-radius: 5px;
+    min-height: fit-content;
+    width: 50%;
+}
+
+#profile-title {
+    margin: 30px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.feature-text {
+    font-size: 16px;
+    margin: auto 30px 30px 30px;
+}

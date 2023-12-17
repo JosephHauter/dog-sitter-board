@@ -1,0 +1,46 @@
+.view {
+    margin-top: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.posting {
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 70%;
+    margin: 0 auto 30px auto;
+    
+}
+
+.posting-inner-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.posting-text {
+    float: left;
+    margin: 35px 50px auto 50px;
+}
+
+.posting-name {
+    margin-bottom: 0;
+}
+
+.posting-user{
+    font-size: 14px;
+    padding-top: 50px;
+    padding-bottom: 20px;
+    color: gray;
+}
+
+.posting-location {
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.posting-image {
+    width: 30%;
+    max-height: 300px;
+    object-fit: cover;
+    float: right;
+    border-radius: 0 5px 5px 0;
+}

@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color:rgb(243, 243, 243);
 }
 
 .App-logo {
@@ -36,3 +37,8 @@
     transform: rotate(360deg);
   }
 }
+
+/**
+Color Palette
+https://colorhunt.co/palette/ec8f5ef3b664f1eb909fbb73
+ */

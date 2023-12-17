@@ -1,0 +1,81 @@
+body {
+    margin: 0;
+}
+
+.home-outer-wrapper {
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 1.5px;
+    height: auto;
+    margin-bottom: 50px;
+}
+
+.home-title-block {
+    height: 100vh;
+    text-align: center;
+    width: 100%;
+    background-size: 100% 100%;
+    background-image: url("https://images.wallpaperscraft.com/image/single/corgi_dog_pet_936416_3840x2160.jpg");
+    background-repeat: no-repeat;
+}
+
+.home-intro {
+    margin: 0;
+    height: 100vh;
+    font-size: 64px;
+    font-weight: bold;
+    text-shadow:black 0px 0px 15px;
+    color: white;
+    transform: scale(.8, 1);
+	display: flex;
+    text-align: center;
+	flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.how-it-works-wrapper {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    height: auto;
+    color: black;
+}
+
+#find-dog {
+    text-align: center;
+    line-height: 2;
+    font-size: 16px;
+}
+
+#how-it-works {
+    color: #EC8F5E;
+    font-size: 24px;
+    margin-left: 50px;
+}
+
+.features-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 50px 0 50px;
+}
+
+.features {
+    width: 30%;
+    min-height: fit-content;
+    background-color: #EC8F5E;
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.features-img {
+    width: 100%;
+    height: 30vh;
+    object-fit: cover;
+}
+
+.features-mini-text {
+    font-size: 14px;
+    margin: 15px 35px 15px 35px;
+    text-align: justify;
+}
