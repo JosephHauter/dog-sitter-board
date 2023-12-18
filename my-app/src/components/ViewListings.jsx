@@ -1,7 +1,3 @@
-/**
- * ViewListings.jsx
- * All created posts will appear in the Jobs tab. 
- */
 import React, { useState, useEffect } from 'react';
 import "../styles/viewlisting.css"
 
@@ -9,10 +5,16 @@ const ViewListings = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/users')
-      .then(response => response.json())
-      .then(data => setUsers(data))
-      .catch(error => console.error('Error:', error));
+    fetch('/users')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return response.json();
+  })
+  .then(data => setUsers(data))
+  .catch(error => console.error('Error:', error));
+
   }, []);
 
   console.log(users);
@@ -27,11 +29,11 @@ const ViewListings = () => {
               <p className="posting-description">{user.description}</p>
               <p className="posting-user"> Posted by: {user.name}</p>
             </div>
-            <img
-              src={`http://localhost:5000/uploads/${user.image.filename}`}
+            {/* <img
+              src={`${process.env.REACT_APP_SERVER_URL}/uploads/${user.image.filename}`}
               alt={user.name}
               className="posting-image"
-            />
+            /> */}
           </div> 
         </div>
       ))}
@@ -40,6 +42,3 @@ const ViewListings = () => {
 };
 
 export default ViewListings;
-
-
-

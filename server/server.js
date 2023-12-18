@@ -6,12 +6,16 @@ const bodyParser = require('body-parser');
 const multer = require('multer');
 const bcrypt = require('bcrypt'); 
 const jwt = require('jsonwebtoken')
-require('dotenv').config();
+require('dotenv').config({ path: '/etc/secrets/.env' });
 
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+const path = require('path');
+
+// react start
+app.use(express.static(path.join(__dirname, '../my-app/build')));
 
 // Your MongoDB connection string
 const url = process.env.DB_URI;
@@ -61,12 +65,18 @@ const upload = multer({
   storage: Storage,
 }).single('image'); // Use 'image' instead of 'testImage'
 
+
+
 // Handle GET request
 app.get('/users', (req, res) => {
   Image.find()
     .then((images) => res.json(images))
-    .catch((err) => res.status(400).json('Error: ' + err));
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json('Error: ' + err);
+    });
 });
+
 
 app.post('/upload', (req, res) => {
   upload(req, res, (err) => {
@@ -175,7 +185,9 @@ app.put('/updateprofile', async (req, res) => {
 });
 
 
-
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../my-app/build', 'index.html'));
+});
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Listening to port ${PORT}`);
