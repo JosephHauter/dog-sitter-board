@@ -46,6 +46,7 @@ const CreatePost = () => {
       // Handle success, update state, show notifications, etc.
       console.log('Success:', data);
       setError(''); // Clear the error message on successful submission
+      alert("You have successfully created a post!");
       
     } catch (error) {
       // Handle errors, show error messages, etc.
