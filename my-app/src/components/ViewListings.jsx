@@ -5,7 +5,7 @@ const ViewListings = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch('https://dog-board.onrender.com/users')
+    fetch('/users')
       .then(response => response.json())
       .then(data => setUsers(data))
       .catch(error => console.error('Error:', error));
