@@ -27,11 +27,11 @@ const ViewListings = () => {
               <p className="posting-description">{user.description}</p>
               <p className="posting-user"> Posted by: {user.name}</p>
             </div>
-            <img
+            {/* <img
               src={`https://dog-board.onrender.com/uploads/${user.image.filename}`}
               alt={user.name}
               className="posting-image"
-            />
+            /> */}
           </div> 
         </div>
       ))}

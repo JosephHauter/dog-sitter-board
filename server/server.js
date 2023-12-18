@@ -72,8 +72,12 @@ const upload = multer({
 app.get('/users', (req, res) => {
   Image.find()
     .then((images) => res.json(images))
-    .catch((err) => res.status(400).json('Error: ' + err));
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json('Error: ' + err);
+    });
 });
+
 
 app.post('/upload', (req, res) => {
   upload(req, res, (err) => {
