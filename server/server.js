@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const multer = require('multer');
 const bcrypt = require('bcrypt'); 
 const jwt = require('jsonwebtoken')
-require('dotenv').config();
+require('dotenv').config({ path: '/etc/secrets/.env' });
 
 app.use(cors());
 app.use(express.json());
