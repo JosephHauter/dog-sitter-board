@@ -1,7 +1,3 @@
-/**
- * ViewListings.jsx
- * All created posts will appear in the Jobs tab. 
- */
 import React, { useState, useEffect } from 'react';
 import "../styles/viewlisting.css"
 
@@ -28,7 +24,7 @@ const ViewListings = () => {
               <p className="posting-user"> Posted by: {user.name}</p>
             </div>
             {/* <img
-              src={`https://dog-board.onrender.com/uploads/${user.image.filename}`}
+              src={`${process.env.REACT_APP_SERVER_URL}/uploads/${user.image.filename}`}
               alt={user.name}
               className="posting-image"
             /> */}
@@ -40,6 +36,3 @@ const ViewListings = () => {
 };
 
 export default ViewListings;
-
-
-
