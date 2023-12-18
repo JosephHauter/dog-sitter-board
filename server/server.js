@@ -17,9 +17,6 @@ const path = require('path');
 // react start
 app.use(express.static(path.join(__dirname, '../my-app/build')));
 
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../my-app/build', 'index.html'));
-});
 // Your MongoDB connection string
 const url = process.env.DB_URI;
 
@@ -67,6 +64,8 @@ const Storage = multer.diskStorage({
 const upload = multer({
   storage: Storage,
 }).single('image'); // Use 'image' instead of 'testImage'
+
+
 
 // Handle GET request
 app.get('/users', (req, res) => {
@@ -186,7 +185,9 @@ app.put('/updateprofile', async (req, res) => {
 });
 
 
-
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../my-app/build', 'index.html'));
+});
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Listening to port ${PORT}`);

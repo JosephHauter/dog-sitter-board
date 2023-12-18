@@ -6,9 +6,15 @@ const ViewListings = () => {
 
   useEffect(() => {
     fetch('/users')
-      .then(response => response.json())
-      .then(data => setUsers(data))
-      .catch(error => console.error('Error:', error));
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return response.json();
+  })
+  .then(data => setUsers(data))
+  .catch(error => console.error('Error:', error));
+
   }, []);
 
   console.log(users);
