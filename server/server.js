@@ -12,6 +12,8 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+const path = require('path');
+
 // react start
 app.use(express.static(path.join(__dirname, '../my-app/build')));
 
