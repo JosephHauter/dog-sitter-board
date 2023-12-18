@@ -15,7 +15,7 @@ const Register = () => {
 
   const handleRegister = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/register', {
+      const response = await axios.post('https://dog-board.onrender.com/register', {
         username, 
         email, 
         password,

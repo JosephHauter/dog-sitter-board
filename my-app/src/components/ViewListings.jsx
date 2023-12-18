@@ -9,7 +9,7 @@ const ViewListings = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/users')
+    fetch('https://dog-board.onrender.com/users')
       .then(response => response.json())
       .then(data => setUsers(data))
       .catch(error => console.error('Error:', error));
@@ -28,7 +28,7 @@ const ViewListings = () => {
               <p className="posting-user"> Posted by: {user.name}</p>
             </div>
             <img
-              src={`http://localhost:5000/uploads/${user.image.filename}`}
+              src={`https://dog-board.onrender.com/uploads/${user.image.filename}`}
               alt={user.name}
               className="posting-image"
             />
