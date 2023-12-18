@@ -34,7 +34,7 @@ export const setError = (error) => ({
 export const login = (username, password) => async (dispatch) => {
   dispatch(setLoading(true));
   try {
-    const response = await axios.post('http://localhost:5000/login', { username, password });
+    const response = await axios.post('https://dog-board.onrender.com/login', { username, password });
     if (response.data.success) {
       dispatch(setUser(response.data.user));  
       dispatch(setEmail(response.data.email)); 
